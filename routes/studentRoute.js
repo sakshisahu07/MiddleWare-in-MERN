@@ -1,21 +1,12 @@
 
 
-// const express=require("express");
-// const route=express.Router();
-// const stuController=require("../controllers/studentController");
-
-// route.get("/stuinfo",stuController.stuInfo);
-// route.get("/stufees",stuController.stuFees);
-// route.get("/sturesult",stuController.stuResult);
-// route.get("/stusubject",stuController.stuSubject);
-
-
-// module.exports=route;
 
 const express=require("express");
 const route=express.Router();
-const StuController=require("../controllers/studentController");
+const stuController=require("../controllers/studentController");
 
-route.get("/stuinfo",StuController.stuInformation);
+route.get("/home",stuController.homePage);
+route.post("/insert",stuController.insertPage);
+route.get("/display",stuController.displayPage);
 
 module.exports=route;
