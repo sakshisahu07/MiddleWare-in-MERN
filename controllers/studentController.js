@@ -1,29 +1,27 @@
 
+const empModel=require("../models/studentModel");
 
-const stuModel=require("../models/studentModel");
 const homePage=(req,res)=>{
-    res.send("<h1>This is our home page!!");
+
+    res.send("This is home page");
 }
 const insertPage=(req,res)=>{
-    const {rollno,name,city,fees}=req.body;
-    const student=new stuModel({
-        rollno:rollno,
+    const {empno,name,city,salary}=req.body;
+    const employee=new empModel({
+        empno:empno,
         name:name,
         city:city,
-        fees:fees
+        salary:salary
     })
-    student.save();
-    res.send("Data Succcessfully save!!!")
+    employee.save();
+    res.send("Employee Data Inserted");
 }
 const displayPage=async(req,res)=>{
-    const studata=await stuModel.find();
-    res.send(studata);
+    const empdata=await empModel.find();
+    res.send(empdata);
 }
 module.exports={
-
     homePage,
     insertPage,
     displayPage
-    
-
 }
