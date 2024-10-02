@@ -20,8 +20,18 @@ const displayPage=async(req,res)=>{
     const empdata=await empModel.find();
     res.send(empdata);
 }
+
+const searchPage=async(req,res)=>{
+    const {empno}=req.body;
+    const data=await empModel.find({"empno":empno})
+    console.log(empno);
+    res.send(data);
+
+}
+
 module.exports={
     homePage,
     insertPage,
-    displayPage
+    displayPage,
+    searchPage
 }
