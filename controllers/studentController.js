@@ -2,7 +2,6 @@
 const empModel=require("../models/studentModel");
 
 const homePage=(req,res)=>{
-
     res.send("This is home page");
 }
 const insertPage=(req,res)=>{
@@ -29,9 +28,26 @@ const searchPage=async(req,res)=>{
 
 }
 
+const empSearchByQuery=async(req,res)=>{
+    const {name,city}=req.query;
+    const Data= await empModel.find({$and:[{"name":name},{"city":city}]});
+    res.send(Data);
+}
+const empSaveCreate=async(req,res)=>{
+    const {empno,name,city,salary}=req.body;
+    const MyData=empModel.create({
+        empno:empno,
+        name:name,
+        city:city,
+        salary:salary
+    })
+    res.send(MyData);
+}
 module.exports={
     homePage,
     insertPage,
     displayPage,
-    searchPage
+    searchPage,
+    empSearchByQuery,
+    empSaveCreate
 }
